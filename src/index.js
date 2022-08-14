@@ -30,6 +30,7 @@ function displayTemperature(response) {
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind");
   let date = document.querySelector("#date");
+  let iconElement = document.querySelector("#icon");
 
   pressureElement.innerHTML = response.data.main.pressure;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -38,9 +39,14 @@ function displayTemperature(response) {
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
   date.innerHTML = formatedDate();
+  iconElement.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+  );
+  iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
 }
 
-let city = "london";
+let city = "paris";
 let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
 let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 

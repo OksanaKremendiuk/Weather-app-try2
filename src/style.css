@@ -26,6 +26,10 @@ li {
   font-size: 16px;
   line-height: 20px;
 }
+
+a {
+  text-decoration: none;
+}
 .weather-app-wrapper {
   max-width: 600px;
   margin: 30px auto;
@@ -54,4 +58,12 @@ li {
   position: relative;
   font-size: 16px;
   top: -32px;
+}
+.active {
+  color: #202124;
+  cursor: default;
+  text-decoration: none;
+}
+.active:hover {
+  color: #202124;
 }

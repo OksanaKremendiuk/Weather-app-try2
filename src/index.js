@@ -45,9 +45,35 @@ function displayTemperature(response) {
   );
   iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
 }
+function search(city) {
+  let unit = "metric";
+  let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
 
-let city = "paris";
-let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+function handleSubmit(event) {
+  event.preventDefault();
+  let cityInputElement = document.querySelector("#city-input");
+  search(cityInputElement.value);
+}
 
-axios.get(apiUrl).then(displayTemperature);
+search("Kyiv");
+
+let form = document.querySelector("#city-form");
+form.addEventListener("submit", handleSubmit);
+
+function weatherInYourCity(position) {
+  let latitude = position.coords.latitude;
+  let longitude = position.coords.longitude;
+  let unit = "metric";
+  let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
+  let apiUrl = `https://api.openweathermap.org/data/2.5/weather?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=${unit}`;
+  axios.get(apiUrl).then(displayTemperature);
+}
+
+function getCurrentCity() {
+  navigator.geolocation.getCurrentPosition(weatherInYourCity);
+}
+let button = document.querySelector("#geo-position-button");
+button.addEventListener("click", getCurrentCity);

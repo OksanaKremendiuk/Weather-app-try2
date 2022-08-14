@@ -1,3 +1,26 @@
+function formatedDate() {
+  let now = new Date();
+  let days = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday",
+  ];
+  let day = days[now.getDay()];
+  let currentHour = now.getHours();
+  if (currentHour < 10) {
+    currentHour = `0${currentHour}`;
+  }
+  let currentMinute = now.getMinutes();
+  if (currentMinute < 10) {
+    currentMinute = `0${currentMinute}`;
+  }
+  return `${day} ${currentHour}:${currentMinute}`;
+}
+
 function displayTemperature(response) {
   console.log(response.data);
   let temperatureElement = document.querySelector("#temparature");
@@ -6,6 +29,7 @@ function displayTemperature(response) {
   let pressureElement = document.querySelector("#pressure");
   let humidityElement = document.querySelector("#humidity");
   let windSpeedElement = document.querySelector("#wind");
+  let date = document.querySelector("#date");
 
   pressureElement.innerHTML = response.data.main.pressure;
   humidityElement.innerHTML = response.data.main.humidity;
@@ -13,9 +37,11 @@ function displayTemperature(response) {
   descriptionElement.innerHTML = response.data.weather[0].description;
   cityElement.innerHTML = response.data.name;
   temperatureElement.innerHTML = Math.round(response.data.main.temp);
+  date.innerHTML = formatedDate();
 }
 
+let city = "london";
 let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
-let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=london&appid=${apiKey}&units=metric`;
+let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
 
 axios.get(apiUrl).then(displayTemperature);

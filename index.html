@@ -12,16 +12,17 @@
       crossorigin="anonymous"
     />
     <link rel="stylesheet" href="src/style.css" />
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
   </head>
   <body>
     <div class="container">
       <div class="weather-app-wrapper">
         <div class="weather-app">
           <div class="overview">
-            <h1>London</h1>
+            <h1 id="city"></h1>
             <ul>
               <li>Friday 05:00</li>
-              <li>Clear</li>
+              <li id="description"></li>
             </ul>
           </div>
           <div class="row">
@@ -33,16 +34,16 @@
                   class="float-left"
                 />
                 <div class="float-left">
-                  <strong id="temparature">12</strong
+                  <strong id="temparature"></strong
                   ><span class="units">°C | F°</span>
                 </div>
               </div>
             </div>
             <div class="col-6">
               <ul>
-                <li>pressure: 1000mPa</li>
-                <li>humidity: 90%</li>
-                <li>wind: 6 km/h</li>
+                <li>pressure: <span id="pressure"></span>hPa</li>
+                <li>humidity: <span id="humidity"></span></span>%</li>
+                <li>wind: <span id="wind"></span></span> km/h</li>
               </ul>
             </div>
           </div>

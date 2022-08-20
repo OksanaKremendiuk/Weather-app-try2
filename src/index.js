@@ -80,8 +80,6 @@ function getForecast(city) {
 }
 function displayTemperature(response) {
   getForecast(response.data.id);
-  celsLink.classList.add("active");
-  farhLink.classList.remove("active");
   let temperatureElement = document.querySelector("#temparature");
   let cityElement = document.querySelector("#city");
   let descriptionElement = document.querySelector("#description");
@@ -90,7 +88,6 @@ function displayTemperature(response) {
   let windSpeedElement = document.querySelector("#wind");
   let date = document.querySelector("#date");
   let iconElement = document.querySelector("#icon");
-  celsiusTemp = response.data.main.temp;
   pressureElement.innerHTML = response.data.main.pressure;
   humidityElement.innerHTML = response.data.main.humidity;
   windSpeedElement.innerHTML = Math.round(response.data.wind.speed);
@@ -133,29 +130,5 @@ function getCurrentCity() {
 
 let button = document.querySelector("#geo-position-button");
 button.addEventListener("click", getCurrentCity);
-
-function displayTempInFarh(event) {
-  event.preventDefault();
-  celsLink.classList.remove("active");
-  farhLink.classList.add("active");
-  let temperatureElement = document.querySelector("#temparature");
-  let farhTemp = celsiusTemp * 1.8 + 32;
-  temperatureElement.innerHTML = Math.round(farhTemp);
-}
-
-function displayTempInCels(event) {
-  event.preventDefault();
-  celsLink.classList.add("active");
-  farhLink.classList.remove("active");
-  let temperatureElement = document.querySelector("#temparature");
-  temperatureElement.innerHTML = Math.round(celsiusTemp);
-}
-let celsiusTemp = null;
-
-let farhLink = document.querySelector("#farh-link");
-farhLink.addEventListener("click", displayTempInFarh);
-
-let celsLink = document.querySelector("#cels-link");
-celsLink.addEventListener("click", displayTempInCels);
 
 search("Kyiv");

@@ -59,14 +59,7 @@ a {
   font-size: 16px;
   top: -32px;
 }
-.active {
-  color: #202124;
-  cursor: default;
-  text-decoration: none;
-}
-.active:hover {
-  color: #202124;
-}
+
 .weather-forecast {
   text-align: center;
   margin-top: 25px;

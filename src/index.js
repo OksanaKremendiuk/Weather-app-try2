@@ -39,7 +39,7 @@ function displayForecast(response) {
 
   forecast.forEach(function (forecastDay, index) {
     if (
-      index === 2 ||
+      index === 0 ||
       index === 9 ||
       index === 16 ||
       index === 23 ||

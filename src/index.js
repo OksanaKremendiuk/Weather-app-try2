@@ -53,7 +53,7 @@ function displayForecast(response) {
                forecastDay.dt
              )}</div>
        <img
-         src="http://openweathermap.org/img/wn/${
+         src="https://openweathermap.org/img/wn/${
            forecastDay.weather[0].icon
          }@2x.png"
          alt=""
@@ -75,7 +75,7 @@ function displayForecast(response) {
 }
 function getForecast(city) {
   let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
-  let apiUrl = `http://api.openweathermap.org/data/2.5/forecast?id=${city}&appid=${apiKey}&units=${unit}`;
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?id=${city}&appid=${apiKey}&units=${unit}`;
   axios.get(apiUrl).then(displayForecast);
 }
 function displayTemperature(response) {
@@ -97,7 +97,7 @@ function displayTemperature(response) {
   date.innerHTML = formatedDate();
   iconElement.setAttribute(
     "src",
-    `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+    `https://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
   );
   iconElement.setAttribute("alt", `${response.data.weather[0].main}`);
 }

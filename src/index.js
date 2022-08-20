@@ -34,7 +34,7 @@ function formatDay(timestamp) {
 
 function displayForecast(response) {
   let forecast = response.data.list;
-  let forecastElement1 = document.querySelector("#forecast");
+  let forecastElement = document.querySelector("#forecast");
   let forecastHTML = `<div class="row">`;
 
   forecast.forEach(function (forecastDay, index) {
@@ -71,7 +71,7 @@ function displayForecast(response) {
     }
   });
   forecastHTML = forecastHTML + `</div>`;
-  forecastElement1.innerHTML = forecastHTML;
+  forecastElement.innerHTML = forecastHTML;
 }
 function getForecast(city) {
   let apiKey = "4a6d5a2213f3c0c35df9b43a1ead3cfc";
